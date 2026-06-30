@@ -1,0 +1,9 @@
+/home/emily/cs5700/src/test/kotlin/shapes/PointTest.kt
+/home/emily/cs5700/src/test/kotlin/shapes/EllipseTest.kt
+/home/emily/cs5700/src/test/kotlin/shapes/AreaMeasurableTest.kt
+/home/emily/cs5700/src/test/kotlin/shapes/TriangleTest.kt
+/home/emily/cs5700/src/test/kotlin/shapes/CircleTest.kt
+/home/emily/cs5700/src/test/kotlin/shapes/LineTest.kt
+/home/emily/cs5700/src/test/kotlin/shapes/MovableTest.kt
+/home/emily/cs5700/src/test/kotlin/shapes/SquareTest.kt
+/home/emily/cs5700/src/test/kotlin/shapes/RectangleTest.kt
