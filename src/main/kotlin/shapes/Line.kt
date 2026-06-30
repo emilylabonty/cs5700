@@ -1,5 +1,6 @@
 package shapes
 
+import kotlin.math.abs
 import kotlin.math.pow
 import kotlin.math.sqrt
 
@@ -23,11 +24,15 @@ class Line(
         return end.clone()
     }
 
+    /**
+     * Returns the slope of the line.
+     * Vertical lines have undefined slope, so this method throws an ArithmeticException.
+     */
     fun getSlope(): Double {
         val deltaX = end.getX() - start.getX()
         val deltaY = end.getY() - start.getY()
 
-        if (deltaX == 0.0) {
+        if (abs(deltaX) < EPSILON) {
             throw ArithmeticException("Vertical lines have undefined slope.")
         }
 
@@ -47,8 +52,12 @@ class Line(
     }
 
     private fun validate() {
-        if (start.getX() == end.getX() && start.getY() == end.getY()) {
+        if (getLength() < EPSILON) {
             throw IllegalArgumentException("A line cannot have zero length.")
         }
+    }
+
+    private companion object {
+        const val EPSILON = 0.000001
     }
 }

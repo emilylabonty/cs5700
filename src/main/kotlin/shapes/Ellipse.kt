@@ -6,7 +6,7 @@ open class Ellipse(
     center: Point,
     private val radiusX: Double,
     private val radiusY: Double
-) : Movable {
+) : Movable, AreaMeasurable {
 
     private var center: Point = center.clone()
 
@@ -26,7 +26,7 @@ open class Ellipse(
         return radiusY
     }
 
-    fun getArea(): Double {
+    override fun getArea(): Double {
         return PI * radiusX * radiusY
     }
 
@@ -35,12 +35,16 @@ open class Ellipse(
     }
 
     private fun validate() {
-        if (radiusX <= 0.0) {
+        if (radiusX < EPSILON) {
             throw IllegalArgumentException("An ellipse must have a positive x-radius.")
         }
 
-        if (radiusY <= 0.0) {
+        if (radiusY < EPSILON) {
             throw IllegalArgumentException("An ellipse must have a positive y-radius.")
         }
+    }
+
+    private companion object {
+        const val EPSILON = 0.000001
     }
 }

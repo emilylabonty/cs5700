@@ -6,7 +6,7 @@ class Triangle(
     point1: Point,
     point2: Point,
     point3: Point
-) : Movable {
+) : Movable, AreaMeasurable {
 
     private var point1: Point = point1.clone()
     private var point2: Point = point2.clone()
@@ -28,7 +28,7 @@ class Triangle(
         return point3.clone()
     }
 
-    fun getArea(): Double {
+    override fun getArea(): Double {
         val x1 = point1.getX()
         val y1 = point1.getY()
         val x2 = point2.getX()
@@ -50,8 +50,12 @@ class Triangle(
     }
 
     private fun validate() {
-        if (getArea() == 0.0) {
+        if (getArea() < EPSILON) {
             throw IllegalArgumentException("A triangle cannot have an area of zero.")
         }
+    }
+
+    private companion object {
+        const val EPSILON = 0.000001
     }
 }

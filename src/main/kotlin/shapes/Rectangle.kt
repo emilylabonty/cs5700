@@ -5,7 +5,7 @@ import kotlin.math.abs
 open class Rectangle(
     corner1: Point,
     corner2: Point
-) : Movable {
+) : Movable, AreaMeasurable {
 
     private var corner1: Point = corner1.clone()
     private var corner2: Point = corner2.clone()
@@ -30,7 +30,7 @@ open class Rectangle(
         return abs(corner2.getY() - corner1.getY())
     }
 
-    fun getArea(): Double {
+    override fun getArea(): Double {
         return getWidth() * getHeight()
     }
 
@@ -40,12 +40,16 @@ open class Rectangle(
     }
 
     private fun validate() {
-        if (getWidth() == 0.0) {
+        if (getWidth() < EPSILON) {
             throw IllegalArgumentException("A rectangle cannot have zero width.")
         }
 
-        if (getHeight() == 0.0) {
+        if (getHeight() < EPSILON) {
             throw IllegalArgumentException("A rectangle cannot have zero height.")
         }
+    }
+
+    private companion object {
+        const val EPSILON = 0.000001
     }
 }
